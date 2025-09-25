@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Editor</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
@@ -11,7 +12,7 @@
             <div class="brand">
             
             <div class="logo"></div>
-            <div class="title"></div>
+            <div class="title">Live Code Editor</div>
             </div>
             <div class="row">
                 <button class="btn secondary" id="saveBtn" title="save work locally"><span>save</span></button>
@@ -20,6 +21,70 @@
             </div>    
         </div>
     </header>
+    <main>
+        <aside class="card panel stack">
+            <h2>Task / Assignment</h2>
+            <textarea name="" id="assignment" class="text" placeholder="Write the task description"></textarea>
+            <div class="stack">
+                <label for="testArea">Validation tests (javascript only - optional)</label>
+                <textarea name="" id="testArea" class="text" placeholder="Write the validation tests"></textarea>
+            </div>
+            <div class="muted">
+                Tip: <span class="kbd">Ctrl</span> + <span class="kbd">S</span> to save,
+                <span>Ctrl</span> + <span class="kbd">Enter</span> to run
+            </div>
+        </aside>
+
+        <section class="stack" id="web-only">
+            <div id="webEditor" class="stack panel card">
+                <div class="row">
+                    <h2>HTML / CSS / JS</h2>
+                    <div class="row">
+                        <button class="btn ok" id="runWeb">Run</button>
+                        <button class="btn secondary" id="openPreview">open previw in a new window</button>
+                    </div>
+
+                </div>
+                <div class="tabs" id="webTabs" role="tablist" aria-label="web editors">
+                    <button class="tab active" role="tab" aria-selected="true" tabindex="0" data-pane="html">HTML</button>
+                    <button class="tab" role="tab" aria-selected="false" tabindex="-1" data-pane="css">CSS</button>
+                    <button class="tab" role="tab" aria-selected="false" tabindex="-1" data-pane="js">JavaScript</button>
+                </div>
+                <div class="editor-wrap" data-pane="html">
+                    <div class="editor" id="ed_html"></div>
+                </div>
+                <div class="editor-wrap" data-pane="css" hidden>
+                    <div class="editor" id="ed_css"></div>
+
+                </div>
+                <div class="editor-wrap" data-pane="js" hidden>
+                    <div class="editor" id="ed_js"></div>
+                </div>
+                <div class="stack">
+                    <h3>Preview</h3>
+                    <iframe id="preview" src="" sandbox="allow-scripts allow-same-origin allow-models allow-form"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <aside class="stack panel card">
+            <h2>Output</h2>
+            <div id="output" class="out" aria-live="polite"></div>
+            <div class="row">
+                <button class="btn warn" id="runTests">Run with tests</button>
+                <button class="btn secondary" id="clear">Clear Log</button>
+            </div>
+            <h3>Notes</h3>
+            <ul class="muted">
+                <li>Everything runs inside the browser in a sandbox</li>
+                <li>you can save work as a json file and restore it</li>
+            </ul>
+        </aside>
+    </main>
+
+    <div class="footer">2025 &reg; Right reserved</div>
+
+    <script src="script.js"></script>
     
 </body>
 </html>
